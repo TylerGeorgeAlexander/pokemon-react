@@ -20,7 +20,7 @@ export default function PokeCard() {
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())
-      .then((data) => setPokemon(capitalizeFirstLetter(data.name)))
+      .then((data) => setPokemon(capitalizeFirstLetter(data.name)));
   }, [url]);
 
   // Pokemon ID
@@ -43,19 +43,20 @@ export default function PokeCard() {
   }
 
   // Mapping different languages of description
+  // TODO implement a dropdown menu for selecting languages
   let descMap = "Loading...";
   if (desc) {
     descMap = desc.map((d) => {
-      return <li>{d.description}</li>;
+      return <li className="">{d.description}</li>;
     });
   }
 
   const nextHandler = async () => {
-    history.push(`/${index + 1}`)
+    history.push(`/${index + 1}`);
   };
 
   const previousHandler = async () => {
-    history.push(`/${index - 1}`)
+    history.push(`/${index - 1}`);
   };
 
   // TEST AREA FOR CONSOLE LOG
@@ -64,21 +65,25 @@ export default function PokeCard() {
   // TODO Implement clickHandlers for the button to go to the next pokemon in pokedex
   return (
     <div className="App">
-      <div className="card">
+      <div className="nes-container">
         <img
+          className="img-fluid mx-auto d-block"
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokeId}.svg`}
           alt="..."
-          style={{ width: "10rem" }}
+          style={{ width: " width: 100%" }}
         />
 
-        <div className="card-body">
-          <h5 className="card-title">{pokemon}</h5>
-          <ul className="card-text">{descMap}</ul>
+        <div className="nes-container with-title is-centered">
+          <h5 className="card-title title">{pokemon}</h5>
+
+          <div className="lists">
+            <ul className="card-text nes-list is-disc">{descMap}</ul>
+          </div>
           <p>{index}</p>
-          <button onClick={nextHandler} className="btn btn-primary">
+          <button onClick={nextHandler} className="nes-btn is-primary m-2">
             Next
           </button>
-          <button onClick={previousHandler} className="btn btn-primary">
+          <button onClick={previousHandler} className="nes-btn is-primary m-2">
             Previous
           </button>
         </div>
