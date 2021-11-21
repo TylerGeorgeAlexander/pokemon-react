@@ -5,6 +5,7 @@ import Header from "./Header";
 import NotFound from "./NotFound";
 import PokeCard from "../Components/PokeCard";
 
+
 function Layout() {
   return (
     <div>
@@ -14,7 +15,7 @@ function Layout() {
           <Route exact path="/:pokeId">
             <PokeCard />
           </Route>
-   
+            
           <Route>
             <NotFound />
           </Route>
