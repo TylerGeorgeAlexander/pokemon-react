@@ -9,7 +9,7 @@ export default function PokeName({pokemon, setPokemon, pokeId}) {
     fetch(url)
       .then((response) => response.json())
       .then((data) => setPokemon(capitalizeFirstLetter(data.name)));
-  }, [url]);
+  }, [url, setPokemon]);
 
   return <h5 className="card-title title">{pokemon}</h5>;
 }
