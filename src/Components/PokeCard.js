@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import PokeName from "./PokeName"
-
+import PokeName from "./PokeName";
 
 export default function PokeCard() {
   const { pokeId } = useParams();
@@ -11,15 +10,13 @@ export default function PokeCard() {
 
   // Used this url for description
   const urlDesc = `https://pokeapi.co/api/v2/characteristic/${pokeId}/`;
-  
+
   const url = `https://pokeapi.co/api/v2/pokemon/${pokeId}`;
 
   // Pokemon Name
   const [pokemon, setPokemon] = useState([]);
   // Pokemon Characteristics
   const [desc, setDesc] = useState("Loading...");
-
-
 
   // Pokemon ID
   useEffect(() => {
@@ -32,7 +29,7 @@ export default function PokeCard() {
   useEffect(() => {
     fetch(urlDesc)
       .then((response) => response.json())
-      .then((data) => setDesc(data.descriptions[2].description));
+      .then((data) => setDesc(data.descriptions[7].description));
   }, [urlDesc]);
 
   // Mapping different languages of description
@@ -51,11 +48,15 @@ export default function PokeCard() {
   // }
 
   const nextHandler = async () => {
-    history.push(`/${index + 1}`);
+    if (index > 0) {
+      history.push(`/${index + 1}`);
+    }
   };
 
   const previousHandler = async () => {
-    history.push(`/${index - 1}`);
+    if (index > 1) {
+      history.push(`/${index - 1}`);
+    }
   };
 
   // TEST AREA FOR CONSOLE LOG
@@ -73,11 +74,11 @@ export default function PokeCard() {
         />
 
         <div className="nes-container with-title is-centered">
-          <PokeName pokemon={pokemon} setPokemon={setPokemon} pokeId={pokeId}/>
+          <PokeName pokemon={pokemon} setPokemon={setPokemon} pokeId={pokeId} />
 
           <p>ID: {index}</p>
           <div className="lists">
-            <ul className="card-text nes-list is-disc">{desc}</ul>
+            <ul className="card-text nes-list is-disc">Description: {desc}</ul>
           </div>
           <button
             type="button"

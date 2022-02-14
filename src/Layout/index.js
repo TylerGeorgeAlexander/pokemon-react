@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import Header from "./Header";
 import NotFound from "./NotFound";
 import PokeCard from "../Components/PokeCard";
-
+import Home from "../Components/Home";
 
 function Layout() {
   return (
@@ -15,7 +15,10 @@ function Layout() {
           <Route exact path="/:pokeId">
             <PokeCard />
           </Route>
-            
+          <Route path="/">
+            <Home />
+          </Route>
+
           <Route>
             <NotFound />
           </Route>
