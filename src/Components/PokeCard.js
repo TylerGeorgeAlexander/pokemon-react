@@ -82,17 +82,17 @@ export default function PokeCard() {
           </div>
           <button
             type="button"
-            onClick={nextHandler}
-            className="nes-btn is-primary m-2"
-          >
-            Next
-          </button>
-          <button
-            type="button"
             onClick={previousHandler}
             className="nes-btn is-primary m-2"
           >
             Previous
+          </button>
+          <button
+            type="button"
+            onClick={nextHandler}
+            className="nes-btn is-primary m-2"
+          >
+            Next
           </button>
         </div>
       </div>
